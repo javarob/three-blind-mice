@@ -53,7 +53,7 @@ def stockdata():
                            password + '@localhost:5432/tbm')
 
     data = engine.execute(
-        "SELECT id, adj_open, adj_close, symbol, end_val FROM stock_data")
+        "SELECT id, adj_open, adj_close, symbol, end_val, date_str FROM stock_data")
     newdata = []
 
     for x in data:
@@ -62,7 +62,8 @@ def stockdata():
             'adj_open': x[1],
             'adj_close': x[2],
             'symbol': x[3],
-            'end_val': x[4]
+            'end_val': x[4],
+            'date_str': x[5]
         }
         newdata.append(d)
 
